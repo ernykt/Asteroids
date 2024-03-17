@@ -1,14 +1,76 @@
-[gd_scene load_steps=3 format=3 uid="uid://k5y866g4a3i1"]
+[gd_scene load_steps=11 format=3 uid="uid://k5y866g4a3i1"]
 
 [ext_resource type="Texture2D" uid="uid://bigejhlwx3b5m" path="res://sprites/PLAYER.png" id="1_6ficj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kw2p4"]
+[ext_resource type="Texture2D" uid="uid://b486xf16sgt76" path="res://sprites/EXPLOSION SPRITE SHEET.png" id="2_wtpob"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0iua"]
+atlas = ExtResource("2_wtpob")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq4ir"]
+atlas = ExtResource("2_wtpob")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfl4a"]
+atlas = ExtResource("2_wtpob")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fuc7"]
+atlas = ExtResource("2_wtpob")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7u8p"]
+atlas = ExtResource("2_wtpob")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwrx8"]
+atlas = ExtResource("2_wtpob")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ox566"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0iua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq4ir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfl4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fuc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7u8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwrx8")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6ficj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 script = ExtResource("1_kw2p4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_6ficj")
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ox566")
+autoplay = "default"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="PlayerPolygon" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-4, 6, -4, 5, -2, 5, -2, 3, -6, 3, -6, 1, -5, 1, -5, 0, -4, 0, -4, -3, -3, -3, -3, -1, -2, -1, -2, -5, -1, -5, -1, -6, 1, -6, 1, -5, 2, -5, 2, -1, 3, -1, 3, -2.75, 3, -2.75, 3, -3, 4, -3, 4, 0, 5, 0, 5, 1, 6, 1, 6, 3, 2, 3, 2, 5, 4, 5, 4, 6)
+
+[node name="DeathTimer" type="Timer" parent="."]

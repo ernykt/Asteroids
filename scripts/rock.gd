@@ -24,7 +24,10 @@ func screen_wrap():
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
-		body.queue_free()
+		Globals.lives -= 1
+		Globals.emit_signal("player_death")
+		if Globals.lives < 0:
+			body.queue_free()
 	if "Bullet" in body.name:
 		explode(self)
 		self.queue_free()
