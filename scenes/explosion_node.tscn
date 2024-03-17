@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cva4xc3ertaqa"]
+
+[ext_resource type="Script" path="res://scripts/explosion_node.gd" id="1_3l2hs"]
+
+[sub_resource type="Curve" id="Curve_x4cr1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.985748, 0.0736842), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="ExplosionNode" type="Node2D"]
+script = ExtResource("1_3l2hs")
+
+[node name="ExplosionEffect" type="CPUParticles2D" parent="."]
+scale = Vector2(4, 4)
+amount = 60
+lifetime = 0.5
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_x4cr1")
+
+[node name="KillExplosion" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="KillExplosion" to="." method="_on_kill_explosion_timeout"]
