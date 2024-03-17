@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2jas2ri1iqcq"]
+[gd_scene load_steps=5 format=3 uid="uid://c2jas2ri1iqcq"]
 
 [ext_resource type="PackedScene" uid="uid://k5y866g4a3i1" path="res://scenes/player.tscn" id="1_coh26"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_hcybd"]
 [ext_resource type="Texture2D" uid="uid://duny2tdtg67kl" path="res://sprites/background.png" id="1_wxb3b"]
 [ext_resource type="PackedScene" uid="uid://dvoke43g8ytag" path="res://scenes/rock.tscn" id="3_1x3ob"]
-[ext_resource type="AudioStream" uid="uid://dbc0rl4jcy4bq" path="res://sfx/billie eilish - hotline bling (instrumental  loop) (slowed  reverb).mp3" id="5_lyf3i"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hcybd")
@@ -37,15 +36,3 @@ offset_bottom = 378.0
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="MainMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_lyf3i")
-autoplay = true
-
-[node name="Rock5" parent="." instance=ExtResource("3_1x3ob")]
-position = Vector2(862, 95)
-
-[node name="Rock6" parent="." instance=ExtResource("3_1x3ob")]
-position = Vector2(970, 618)
-
-[connection signal="finished" from="MainMusic" to="." method="_on_main_music_finished"]
