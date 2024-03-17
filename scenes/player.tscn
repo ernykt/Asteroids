@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://k5y866g4a3i1"]
+[gd_scene load_steps=14 format=3 uid="uid://k5y866g4a3i1"]
 
 [ext_resource type="Texture2D" uid="uid://bigejhlwx3b5m" path="res://sprites/PLAYER.png" id="1_6ficj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kw2p4"]
 [ext_resource type="Texture2D" uid="uid://b486xf16sgt76" path="res://sprites/EXPLOSION SPRITE SHEET.png" id="2_wtpob"]
+[ext_resource type="AudioStream" uid="uid://c02aw41rrf1q3" path="res://sfx/BULLET_1.wav" id="4_wid36"]
+[ext_resource type="AudioStream" uid="uid://j5qufc52p1rt" path="res://sfx/DESTROY_1.wav" id="5_3sw5q"]
+[ext_resource type="AudioStream" uid="uid://5c0er2vk630v" path="res://sfx/GAME_OVER_1.wav" id="5_6gpng"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h0iua"]
 atlas = ExtResource("2_wtpob")
@@ -74,3 +77,12 @@ autoplay = "default"
 polygon = PackedVector2Array(-4, 6, -4, 5, -2, 5, -2, 3, -6, 3, -6, 1, -5, 1, -5, 0, -4, 0, -4, -3, -3, -3, -3, -1, -2, -1, -2, -5, -1, -5, -1, -6, 1, -6, 1, -5, 2, -5, 2, -1, 3, -1, 3, -2.75, 3, -2.75, 3, -3, 4, -3, 4, 0, 5, 0, 5, 1, 6, 1, 6, 3, 2, 3, 2, 5, 4, 5, 4, 6)
 
 [node name="DeathTimer" type="Timer" parent="."]
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wid36")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6gpng")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3sw5q")

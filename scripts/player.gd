@@ -14,6 +14,7 @@ var is_alive = true
 
 func _ready():
 	Globals.connect("player_death", _respawn_signal)
+	Globals.connect("hit", _on_hit_sound)
 	$"../GameOver".visible = false
 
 func _physics_process(delta):
@@ -56,10 +57,12 @@ func shoot():
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.position = self.position
 	bullet_instance.apply_impulse(Vector2(0, -bullet_speed).rotated(rotation))
+	$ShootSound.play()
 	get_parent().add_child(bullet_instance, true)
 
 func _respawn_signal():
 	print(Globals.lives)
+	$DeathSound.play()
 	is_alive = false
 	velocity = Vector2.ZERO
 	self.collision_layer = 8
@@ -67,3 +70,6 @@ func _respawn_signal():
 	$PlayerSprite.play("death")
 	$DeathTimer.one_shot = true
 	$DeathTimer.start(2)
+
+func _on_hit_sound():
+	$HitSound.play()

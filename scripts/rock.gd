@@ -29,6 +29,7 @@ func _on_area_2d_body_entered(body):
 		if Globals.lives < 0:
 			body.queue_free()
 	if "Bullet" in body.name:
+		Globals.emit_signal("hit")
 		explode(self)
 		self.queue_free()
 		body.queue_free()
