@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2jas2ri1iqcq"]
+
+[ext_resource type="PackedScene" uid="uid://k5y866g4a3i1" path="res://scenes/player.tscn" id="1_coh26"]
+[ext_resource type="PackedScene" uid="uid://dvoke43g8ytag" path="res://scenes/rock.tscn" id="3_1x3ob"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_coh26")]
+position = Vector2(400, 300)
+
+[node name="Rock" parent="." instance=ExtResource("3_1x3ob")]
+position = Vector2(279, 125)
+
+[node name="Rock2" parent="." instance=ExtResource("3_1x3ob")]
+position = Vector2(70, 427)
+
+[node name="Rock3" parent="." instance=ExtResource("3_1x3ob")]
+position = Vector2(506, 538)
+
+[node name="Rock4" parent="." instance=ExtResource("3_1x3ob")]
+position = Vector2(662, 306)

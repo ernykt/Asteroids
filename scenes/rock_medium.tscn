@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbpux7yqh7slg"]
+
+[ext_resource type="Script" path="res://scripts/rock_medium.gd" id="1_7i1qj"]
+[ext_resource type="Texture2D" uid="uid://cdaiquacjn5wb" path="res://sprites/ROCK.png" id="1_w6add"]
+
+[node name="RockMedium" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_7i1qj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-10, 4, -6, 10, -2, 10, 9, 8, 10, 0, 10, -5, 8, -8, 0, -10, -7, -10, -9, -8, -10, -1, -10, 3)
+
+[node name="RockSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_w6add")
