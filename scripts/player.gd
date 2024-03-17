@@ -6,7 +6,6 @@ extends CharacterBody2D
 var bullet = preload("res://scenes/bullet.tscn")
 var rocks = preload("res://scenes/rock.tscn")
 
-var y_pos = [-40, -50, -60]
 var bullet_speed = 1000
 var rotation_direction = 0
 var a = 10.0
@@ -31,7 +30,9 @@ func _physics_process(delta):
 	screen_wrap()
 	get_input()
 	move_and_slide()
-	
+
+func _process(delta):
+	Globals.pos = self.global_position
 func get_input():
 	if is_alive:
 		rotation_direction = Input.get_axis("ui_left", "ui_right")

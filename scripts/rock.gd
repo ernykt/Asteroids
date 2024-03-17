@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-var SPEED = 100.0
+var particle = preload("res://scenes/explosion_node.tscn")
 
+var SPEED = 100.0
 var movement_vector = Vector2(0, -1)
 var sizes = [self.scale, self.scale / 2, self.scale / 4]
 
@@ -30,6 +31,7 @@ func _on_area_2d_body_entered(body):
 			body.queue_free()
 	if "Bullet" in body.name:
 		Globals.emit_signal("hit")
+		spawn_particle()
 		explode(self)
 		self.queue_free()
 		body.queue_free()
@@ -50,3 +52,8 @@ func explode(object):
 				small_instance.position = self.position
 				small_instance.SPEED += randi_range(100,150)
 				get_parent().call_deferred("add_child",small_instance)
+
+func spawn_particle():
+	var particle_instance = particle.instantiate()
+	particle_instance.position = self.position
+	get_parent().call_deferred("add_child",particle_instance)
