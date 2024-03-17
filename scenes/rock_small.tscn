@@ -1,11 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnb8vxe8pjcj1"]
+[gd_scene load_steps=3 format=3 uid="uid://bhlwgdskaahsc"]
 
-[ext_resource type="Script" path="res://scripts/rock_small.gd" id="1_pq8ii"]
 [ext_resource type="Texture2D" uid="uid://cdaiquacjn5wb" path="res://sprites/ROCK.png" id="1_uhxj5"]
+
+[sub_resource type="GDScript" id="GDScript_yiq14"]
+script/source = "extends CharacterBody2D
+
+const SPEED = 300.0
+
+var movement_vector = Vector2(0, -1)
+
+func _ready():
+	rotation = randi_range(0, PI*2)
+
+func _physics_process(delta):
+	screen_wrap()
+	global_position += movement_vector.rotated(rotation) * SPEED * delta
+
+func screen_wrap():
+	if self.position.x > 800:
+		self.position.x = 0
+	if self.position.x < 0:
+		self.position.x = 800
+	if self.position.y < 0:
+		self.position.y = 600
+	if self.position.y > 600:
+		self.position.y = 0
+"
 
 [node name="RockSmall" type="CharacterBody2D"]
 scale = Vector2(2, 2)
-script = ExtResource("1_pq8ii")
+script = SubResource("GDScript_yiq14")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-10, 4, -6, 10, -2, 10, 9, 8, 10, 0, 10, -5, 8, -8, 0, -10, -7, -10, -9, -8, -10, -1, -10, 3)

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 400
-@export var rotation_speed = 1.5
+@export var rotation_speed = 3
 
 var bullet = preload("res://scenes/bullet.tscn")
 var rocks = [preload("res://scenes/rock.tscn"),preload("res://scenes/rock_medium.tscn"), preload("res://scenes/rock_small.tscn")]
@@ -30,13 +30,13 @@ func get_input():
 		get_parent().get_tree().reload_current_scene()
 
 func screen_wrap():
-	if self.position.x > 800:
+	if self.position.x > 1024:
 		self.position.x = 0
 	if self.position.x < 0:
-		self.position.x = 800
+		self.position.x = 1024
 	if self.position.y < 0:
-		self.position.y = 600
-	if self.position.y > 600:
+		self.position.y = 768
+	if self.position.y > 768:
 		self.position.y = 0
 
 func shoot():
